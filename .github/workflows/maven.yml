@@ -26,7 +26,6 @@ jobs:
     - name: Send email notification
       uses: dawidd6/action-send-mail@v3
       with:
-        connection_url: smtp://user:password@server:port
         server_address: test@test.test
         server_port: 465
         subject: <subject>
