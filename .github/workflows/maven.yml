@@ -22,4 +22,14 @@ jobs:
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v3
       with:
-        token: ${{ secrets.CODECOV_TOKEN }}   
+        token: ${{ secrets.CODECOV_TOKEN }}
+    - name: Send email notification
+      uses: dawidd6/action-send-mail@v3
+      with:
+        connection_url: <connection_url>
+        server_address: <address>
+        server_port: 465
+        subject: <subject>
+        to: <email>@<email>.<email>
+        from: Placeholder
+        body: Build job of ${{github.repository}} finished with status ${{job.status}}
