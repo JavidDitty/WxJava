@@ -26,10 +26,10 @@ jobs:
     - name: Send email notification
       uses: dawidd6/action-send-mail@v3
       with:
-        connection_url: <connection_url>
-        server_address: <address>
+        connection_url: smtp://user:password@server:port
+        server_address: test@test.test
         server_port: 465
         subject: <subject>
-        to: <email>@<email>.<email>
-        from: Placeholder
+        to: a@binarywang.test
+        from: Build
         body: Build job of ${{github.repository}} finished with status ${{job.status}}
