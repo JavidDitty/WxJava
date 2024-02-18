@@ -1,0 +1,29 @@
+name: WxJava:branch-2
+on:
+  pull_request:
+    branches:
+      branch-2
+  push:
+    branches:
+      - branch-2
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - with:
+          path: ~/.maven-
+          key: ${{ runner.os }}-maven-${{ hashfiles(arg) }}
+      - name: Set up OpenJDK8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+      - name: build with maven-
+        uses: actions/setup-java@version
+        with:
+          java-version: ${{ matrix.java }} 
+      - uses: actions/checkout@version
+      - run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true        
