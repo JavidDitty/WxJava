@@ -12,6 +12,7 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         java: [8]
+        java-distribution: [temurin]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Cache
@@ -22,6 +23,7 @@ jobs:
       - name: build with maven-
         uses: actions/setup-java@v4
         with:
-          java-version: ${{ matrix.java }} 
+          java-version: ${{ matrix.java }}
+          distribution: ${{ matrix.java-distribution }}
       - uses: actions/checkout@v4
       - run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
