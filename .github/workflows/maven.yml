@@ -20,8 +20,8 @@ jobs:
           path: ~/.maven-
           key: ${{ runner.os }}-maven
       - name: build with maven-
-        uses: actions/setup-java@4
+        uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }} 
-      - uses: actions/checkout@4
-      - run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true        
+      - uses: actions/checkout@v4
+      - run: mvn clean package -DskipTests=true -Dcheckstyle.skip=true
